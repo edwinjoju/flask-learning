@@ -1,19 +1,17 @@
 from flask import Flask
-
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>hey guys...</h1>'
+    return '<h1>Home Page for puppy</h1>'
 
-@app.route('/home')
-def home():
-    return 'you are home'
+@app.route('/puppy_latin/<name>')
+def puppy_latin(name):
+    if name[-1]=='y':
+        return "<h1>{}iful</h1>".format(name)
+    else:
+        return "<h1>{}y</h1>".format(name)
 
-@app.route('/user/<username>')
-def username(username):
-    return '<h1>You are {}</h1>'.format(username)
 
-if __name__ == '__main__':
-    app.run()
-
+if __name__=='__main__':
+    app.run(debug=True)
