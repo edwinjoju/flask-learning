@@ -1,0 +1,14 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+    <div class="jumbotron">
+        <h1>Thank you for signing up {{first}} {{last}}</h1>
+        {%if die=='yes'%}
+        <p>happy dieing in Empuraan</p>
+        {%else%}
+        <p>Good luck for the next sequel</p>
+        {%endif%}
+    </div>
+
+{%endblock%}

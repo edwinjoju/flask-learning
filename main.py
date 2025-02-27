@@ -1,17 +1,25 @@
-from flask import Flask
+from flask import Flask, render_template, request
+
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return '<h1>Home Page for puppy</h1>'
+    return render_template('index.html')
 
-@app.route('/puppy_latin/<name>')
-def puppy_latin(name):
-    if name[-1]=='y':
-        return "<h1>{}iful</h1>".format(name)
-    else:
-        return "<h1>{}y</h1>".format(name)
+@app.route('/signup')
+def signup():
+    return render_template('signup.html')
 
+@app.route('/thankyou')
+def thankyou():
+    first = request.args.get('first')
+    last = request.args.get('last')
+    die= request.args.get('die')
+    return render_template('thankyou.html',first=first,last=last,die=die)
 
-if __name__=='__main__':
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html')
+
+if __name__ == '__main__':
     app.run(debug=True)
