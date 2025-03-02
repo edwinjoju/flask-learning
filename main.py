@@ -1,25 +1,24 @@
 from flask import Flask, render_template, request
 
-app = Flask(__name__)
+app = Flask('__name__')
 
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/signup')
-def signup():
-    return render_template('signup.html')
+@app.route('/report')
+def report():
+    lower_letter = False
+    upper_letter = False
+    num_end = False
 
-@app.route('/thankyou')
-def thankyou():
-    first = request.args.get('first')
-    last = request.args.get('last')
-    die= request.args.get('die')
-    return render_template('thankyou.html',first=first,last=last,die=die)
+    username = request.args.get('username')
 
-@app.errorhandler(404)
-def page_not_found(e):
-    return render_template('404.html')
+    lower_letter = any(i.islower() for i in username)
+    upper_letter = any(i.isupper() for i in username)
+    num_end = any(i.isnumeric() for i in username)
+
+    return render_template('report.html',username=username,lower_letter=lower_letter,upper_letter=upper_letter,num_end=num_end)
 
 if __name__ == '__main__':
     app.run(debug=True)

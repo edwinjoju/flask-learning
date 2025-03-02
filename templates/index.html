@@ -3,8 +3,22 @@
 {% block content%}
 
 <div class="jumbotron">
-    <h1>Hey how would you like to audition for L2Empuraan</h1>
-    <a href="{{url_for('signup')}}">Sign Up</a>
+    <h1>Welcome to my page</h1>
+    <h2>Let's see if your username is secure</h2>
+
+    Fill out the form below with restraints:
+
+    <ul>
+        <li>Must have uppercase</li>
+        <li>Must have lowercase</li>
+        <li>Must hav number at end</li>
+    </ul>
+    <form action="{{url_for('report')}}">
+        <br>
+        <input type="text" name="username">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
 </div>
 
 {%endblock%}

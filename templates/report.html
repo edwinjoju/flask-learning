@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+<p>Let's see your performance</p>
+    {%if username.isupper%}
+        <p>Working</p>
+    {%endif%}
+    <p>{{username.isupper()}}</p>
+    {%if lower_letter and upper_letter and num_end %}
+        <p>You have passed three requirements</p>
+    {%else%}
+        {%if upper_letter == False%}
+        <p>You don't have uppercase</p>
+        {%endif%}
+        {%if lower_letter == False%}
+        <p>You don't have lowercase</p>
+        {%endif%}
+        {%if num_end == False%}
+        <p>You don't have number in end</p>
+        {%endif%}
+    {%endif%}
+{%endblock%}
